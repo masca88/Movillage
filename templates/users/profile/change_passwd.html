@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Registrazione utenti{% endblock %}
+{% block all %}
+	<div class="single">
+		{% if alert %}
+			<div class="filmAlert">
+				{{ alert }}
+			</div>
+		{% endif %}
+		<h2>Change password..</h2><br><br>
+		<form action="." method="POST">
+			<table style="text-align: left;">
+				<tr><td>{{ form.as_table }}</td></tr>
+			</table>
+			<p class="submit"><input type="submit" value="Proceed" /></p>
+		</form>
+	</div>
+{% endblock %}

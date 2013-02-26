@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}{{ group.name }}{% endblock %}
+{% block content %}
+
+
+<br><h2>{{ group.name }}</h2>{% if notmember %}<a href='/gruppi/iscrizione/{{ group.id }}'> Subscribe</a><br>{% endif %}
+{% if iscr %}<a href='/groups/delete/sub/{{ group.id }}'> Delete subscription</a>{% endif %}
+<span>{{ numuser }} users joined this group</span>
+
+<br><br>{{ desc.descrizione }}<br>
+
+
+{% if iscrizione %}
+   <br><h4>{{ iscrizione }}</h4><br><a href='/groups/delete/sub/{{ group.id }}'> Delete subscription</a>
+{% endif %}
+
+{% if notopic %}
+  <br><h4>{{ notopic }}</h4><br>
+{% endif %}
+
+{% if topicadded %}
+  <meta http-equiv="refresh" content="0; url=/gruppi/topics/{{ group.id }}/">
+{% endif %}
+
+
+<br><br>
+
+{% if posts %}
+   <div>
+        <!-- Posts  -->
+        <ul>
+            {% for post in posts.object_list %}
+                <li><a href='/topic/{{ post.id }}/'>{{ post.descrizione }}</a></li>
+            {% endfor %}
+        </ul>
+        <!-- Next/Prev page links  -->
+        {% if posts.object_list and posts.paginator.num_pages > 1 %}
+        <div>
+            <span>
+                {% if posts.has_previous %}
+                    <a href= "?page={{ posts.previous_page_number }}">Prev &lt;&lt; </a>
+                {% endif %}
+
+                <span>
+                    &nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}"> &gt;&gt; Next</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+
+
+<form action="/topic/insert/{{ group.id }}/" method="POST">
+{{ form.as_p }}
+<p class="submit"><input type="submit" value="Add a topic" /> </p>
+</form>         
+
+
+
+
+{% endblock %}

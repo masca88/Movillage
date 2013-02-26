@@ -1,0 +1,21 @@
+<div style="margin:0; padding:0; width:100%; background:transparent; text-align:center;">
+
+<div style="margin:0; padding:0; width:20%; background:transparent; float:left; text-align:center;">
+{% if mostcomm %}
+   <h4>Most commented</h4><br>
+   {% for f in mostcomm %}
+      <a href='/film/scheda/{{ f.id }}'><strong><img src='{{ f.cover }}' alt="{{ film.titolo }}" height="140" width="100" /></strong></a><br>{{ f.titolo }} - {{ f.anno }}<br>
+   {% endfor %}
+    <br><br><br>
+{% endif %}
+</div>
+
+<div style="margin:0; padding:0; width:20%; background:transparent; float:right; text-align:center;">
+{% if mostvoted %}
+   <h4>Most voted</h4><br><br>
+   {% for f in mostvoted %}
+      <a href='/film/scheda/{{ f.id }}'><strong><img src='{{ f.cover }}' alt="{{ film.titolo }}" height="140" width="100" /></strong></a>{{ f.titolo }} - {{ f.anno }}<br>
+   {% endfor %}
+    <br><br><br>
+{% endif %}
+</div> </div>

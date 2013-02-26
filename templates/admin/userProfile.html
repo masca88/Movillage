@@ -1,0 +1,17 @@
+{% extends "admin.html" %}
+{% block title %}User profile{% endblock %}
+{% block content %}
+
+
+<h2>{{ user.username }}</h2> <a href='/adm/deleteUser/{{ profile.user_id }}'>Delete user</a><br><br>
+<br><img src='/static/img/{{ profile.name }}' alt="No photo inserted" height="150" width="130" /><br><br>
+<strong>Name: </strong>{{ profile.nome }}<br><br>
+<strong>surname: </strong>{{ profile.cognome }}<br><br>
+<strong>Country : </strong>{{ profile.paese }}<br><br>
+<strong>Hometown: </strong>{{ profile.citta }}<br><br>
+<strong>Age:</strong>{{ profile.eta }}<br><br>
+<strong>Email: </strong>{{ user.email }}<br><br>
+
+
+
+{% endblock %}

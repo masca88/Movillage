@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}{{ group.name }}{% endblock %}
+{% block content %}
+
+{% if accesso %}
+   <h2>{{ name }}</h2>
+{% endif %}
+
+
+{% if risultati %}
+          {% for i in risultati %}
+          <li>{{ i.date }} {{ i.utente }} has written: {{ i.commento }}</li><br>
+          {% endfor %}
+       {% endif %}
+       <br>
+       
+       <div>
+        <!-- Posts  -->
+        <ul>
+            {% for post in posts.object_list %}
+                 <dt><a href='/report/topic/{{ post.commento_id }}'>Report</a>
+                <div style="overflow-y:auto;position:relative;left:10px;top:10px;background-color:transparent;border:0px solid #900;padding:0.4em;width:500px;height:200px;color: black;">
+
+                 <div style="text-align:center;position:absolute;left:5px;top:2px;border:1px solid #A0522D;padding:0.4em;width:120px;background-color:#fafafa;color: black;">
+                  {{ post.date }}<br><img src='/static/img/users/{{ post.name }}' alt="No photo inserted" height="100" width="90" /><br><br><a href='/utenti/profilo/{{ post.id }}'><strong>{{ post.username }}</strong></a>
+                
+                
+                
+                </div>
+                <div style="text-align:left;position:absolute;left:150px;top:5px;border:0px solid #900;padding:0.4em;width:120px;background-color:#fafafa;color:black;">
+                  {{ post.commento }}
+                </div>
+                </div>
+                
+                </dt>
+                
+                
+                <br>
+            {% endfor %}
+        </ul>
+        <!-- Next/Prev page links  -->
+        {% if posts.object_list and posts.paginator.num_pages > 1 %}
+        <div>
+            <span>
+                {% if posts.has_previous %}
+                    <a href= "?page={{ posts.previous_page_number }}">Prev &lt;&lt; </a>
+                {% endif %}
+
+                <span>
+                    &nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}"> &gt;&gt; Next</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+    </div>
+
+        <br>Post here<br>
+        <form action="/topic/{{ topic }}/" method="post">
+       {{ form.as_p }}
+       <p class="submit"><input type="submit" value="Post" /><p>
+       </form><br><br>
+
+       {% if commentato %}
+       <meta http-equiv="refresh" content="0; url=/topic/{{ topic }}/">
+       {% endif %}
+
+
+{% endblock %}

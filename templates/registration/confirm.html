@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block login %}
+
+	<div align="right" style="padding: 10px 30px 0 0;">
+		<form action="/" method="post">
+			<table>
+				<tr>
+					<td>Username:</td>
+					<td><input type="text" name="username" value="{{ username}}" /></td>
+					<td>Password:</td><td><input type="password" name="password" value="" /></td>
+					<td  align="center"><p class="submit"><input type="submit" value="Log In" /> | <a style="color: white;" href='/accounts/register/'>Register</a></p></td>
+				</tr>
+			</table>				
+		</form>
+		
+	    {% if err != '' %}
+	        <p>{{ err }}</p>
+	    {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block all %}
+	<div class="single">
+	{% if completed %}
+		<div class="filmAlert">
+			{{ completed }}
+		</div>
+	{% endif %}
+	{% if alert %}
+		<div class="filmAlert" style="background-color: pink; border-color: red;">
+			{{ alert }}
+		</div>
+	{% endif %}
+	</div>
+{% endblock %}

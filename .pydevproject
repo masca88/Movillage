@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse-pydev version="1.0"?>
+
+<pydev_project>
+<pydev_variables_property name="org.python.pydev.PROJECT_VARIABLE_SUBSTITUTION">
+<key>DJANGO_MANAGE_LOCATION</key>
+<value>manage.py</value>
+<key>DJANGO_SETTINGS_MODULE</key>
+<value>MovillagE.settings</value>
+</pydev_variables_property>
+<pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
+<path>/MovillagE</path>
+</pydev_pathproperty>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.7</pydev_property>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">python</pydev_property>
+<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
+<path>/Library/Python/2.7/site-packages/IMDbPY-4.9-py2.7-macosx-10.8-intel.egg</path>
+<path>/Library/Python/2.7/site-packages/tmdb.py</path>
+<path>/Library/Python/2.7/site-packages/tmdb3</path>
+</pydev_pathproperty>
+</pydev_project>

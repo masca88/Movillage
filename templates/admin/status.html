@@ -1,0 +1,32 @@
+{% extends "admin.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+
+<h3>Friends</h3>
+{% if result %}
+<ul>
+{% for r in result %} <li>
+{% for t in r %}
+
+ {{ t.id }}
+
+{% endfor %}</li>{% endfor %}
+</ul>
+{% endif %}
+
+
+<h3>Following</h3>
+{% if resultf %}
+<ul>
+{% for r in resultf %} <li>
+{% for t in r %}
+
+ {{ t.id }}
+
+{% endfor %}</li>{% endfor %}
+</ul>
+{% endif %}
+
+
+{% endblock %}

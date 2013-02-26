@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block login %}
+
+	<div align="right" style="padding: 10px 30px 0 0;">
+		<form action="/" method="post">
+			<table>
+				<tr>
+					<td>Username:</td>
+					<td><input type="text" name="username" value="{{ username}}" /></td>
+					<td>Password:</td><td><input type="password" name="password" value="" /></td>
+					<td  align="center"><p class="submit"><input type="submit" value="Log In" /> | <a style="color: white;" href='/accounts/register/'>Register</a></p></td>
+				</tr>
+			</table>				
+		</form>
+		
+	    {% if err != '' %}
+	        <p>{{ err }}</p>
+	    {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block menunav %}
+{% endblock %}  
+
+
+{% block all %}
+<div class="single">
+	<div class="longBox" style="margin-left: 140px;">
+	{% if lastadded.object_list %}
+	   <br><h4>Recently added movies</h4><br>
+	    <div>
+	        <!-- Posts  -->
+	            {% for p in lastadded.object_list %}
+	           		<div >
+		            	<div class="view">
+							<div class="view-back">
+								<span><a href='/film/inspreferiti/{{ p.id }}'><i class="icon-heart"></i> Add Favs</a></span>
+								<a href='/film/scheda/{{ p.id }}'><strong class="freccia">&rarr;</strong></a>
+							</div>
+							 <img src='http://cf2.imgobject.com/t/p/w92/{{ p.cover }}' alt="{{ p.titolo }}" height="110" width="80" />
+						<p>{{ p.titolo }}</p>
+						</div>
+					</div>
+	            {% endfor %}
+	{% endif %}   
+	    </div>
+	</div>
+</div>
+{% endblock %}

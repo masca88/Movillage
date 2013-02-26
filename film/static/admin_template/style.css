@@ -1,0 +1,224 @@
+/* Elementi di base */
+html {min-height: 100%;}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {color: #963;}
+a:hover {color: #C60;}
+
+body {
+	background: #EFEBC8;
+	color: #444;
+	font: normal 62.5% Tahoma,sans-serif;
+}
+
+p,ul {padding-bottom: 1.2em;}
+
+li {list-style: none;}
+
+h1 {
+	font: normal 1.8em Tahoma,sans-serif;
+	margin-bottom: 4px;
+}
+
+blockquote {
+	background: url(img/quote.gif) no-repeat;
+	display: block;
+	font-weight: bold;
+	padding-left: 28px;
+}
+
+h1,h2,h3 {padding-top: 6px;}
+
+/* Elementi personalizzati
+   Questi elementi servono a collocare correttamente 
+   gli elementi principali all'interno della gabbia strutturale */
+
+.clearer {clear: both;}
+
+.left {float: left;}
+
+.right {float: right;}
+
+img.floatleft {
+	float: left;
+	margin: 5px 14px 3px 1px;
+}
+
+img.floatright {
+	float: right;
+	margin: 5px 1px 3px 14px;
+}
+
+/* Elementi della gabbia strutturale */
+.container {
+	background: #FFF;
+	font-size: 1.2em;
+	margin: 0 auto;
+	padding: 0 10px 4px;
+	width: 780px;
+}
+
+/* Elemento che incorpora l'intestazione e serve per distanziare  
+   la gabbia strutturale dal bordo superiore della finestra */
+.top {
+	padding: 50px 10px 0;
+}
+
+/* Intestazione
+   L'intestazione e' divisa in 2 colonne col_left e col_right */
+.header {
+	background: #FFF;
+	font-size: 1.2em;
+	height: 150px;
+	margin: 0 auto;
+	padding: 10px 10px 5px;
+	width: 780px;
+}
+
+.header .col_left { float: left; }
+.header .col_right { float: right; }
+
+.header .col_left, .header .col_right {
+	background: #844824;
+	color: #FFF;
+	height: 150px;	
+}
+.header .col_left {
+	width: 212px;
+}
+.header .col_right {
+	overflow: auto;
+	background: #7B8A51;
+	width: 564px;
+}
+.header .col_left h1 {
+	font: normal 2.8em "Trebuchet MS",sans-serif;
+	line-height: 100px;
+	text-align: left;	
+	padding: 0 16px;
+}
+.header .col_right p,.header .col_right h2 {padding: 0 16px;}
+.header .col_right h2 {padding-top: 16px; font: normal 1.6em "Trebuchet MS",sans-serif;}
+
+/* Menu Navigazione */
+.menunav {	
+	background: #A7A245;
+	border: 1px solid #844824;
+	border-color: #844824 #844824;
+	height: 41px;
+}
+.menunav a {
+	background: #A7A245;
+	border-right: 1px solid #844824;
+	color: #F0EBC8;
+	display: block;
+	float: left;
+	font: bold 1.1em sans-serif;
+	line-height: 41px;
+	padding: 0 20px;
+	text-decoration: none;
+}
+.menunav a:hover {background-position: left bottom; color: #234;}
+
+/* Corpo Principale */
+.main {
+	border-top: 4px solid #FFF;
+	background: url(img/bgmain.gif) repeat-y;
+}
+
+/* Sub-Menu navigazione laterale - Colonna a sinistra della pagina */
+.subnav {
+	float: left;
+	width: 210px;
+}
+.subnav h2 {
+	color: #5A5A43;
+	font-size: 1em;
+	line-height: 30px;
+	margin: 0;
+	padding-left: 12px;
+}
+.subnav ul {
+	padding: 0;
+	border-top: 1px solid #EAEADA;
+}
+.subnav li {border-bottom: 1px solid #EAEADA;}
+.subnav li a {
+	font-size: 1.1em;
+	color: #554;
+	display: block;
+	padding: 8px 0 8px 5%;
+	text-decoration: none;
+	width: 95%;
+}
+.subnav li a:hover {
+	background: #F0F0EB;
+	color: #654;	
+}
+
+/* Contenuti - Colonna a destra della pagina */
+.content {
+	float: right;
+	margin: 10px 0;
+	padding: 0 16px;
+	width: 531px;
+}
+.content .descr {
+	color: #664;
+	font-size: 0.9em;
+	margin-bottom: 6px;
+}
+.content li {
+	list-style: circle;
+	line-height: 1.3em;
+	margin-left: 18px;
+}
+
+.content h3 {
+	font: normal 1.8em Tahoma,sans-serif;
+	margin-bottom: 4px;
+}
+
+.content p {font-family: "Lucida Sans Unicode",sans-serif;}
+
+.content .box {
+	background: #FFF;
+	border: 1px solid #EEE;
+	border-left: 6px solid #C1CAD3;
+	color: #666;
+	display: block;
+	font: normal 1em Tahoma,sans-serif;
+	line-height: 1.6em;
+	margin-bottom: 12px;
+	padding: 8px 10px;
+	white-space: pre;
+}
+
+
+/* Elemento che incorpora l'intestazione e serve per distanziare  
+   la gabbia strutturale dal bordo superiore della finestra */
+.bottom {
+	padding: 0 10px 50px;
+}
+
+/* Pie' di Pagina, chiusura pagina */
+.footer {
+	margin: 0 auto;
+	padding: 10px 10px 5px;
+	width: 760px;
+	border-right: 10px solid #FFF;
+	border-bottom: 10px solid #FFF;
+	border-left: 10px solid #FFF;
+	background-color: #4B5F43;
+	font-family: "Lucida Sans Unicode",sans-serif;
+	color: #FFF;
+	font-size: 1.1em;
+	font-weight: bold;
+	line-height: 35px;
+	text-align: center;
+}
+.footer a,.footer a:hover {color: #FFF;}

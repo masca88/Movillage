@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+        <meta name="description" content="description"/>
+        <meta name="keywords" content="keywords"/> 
+        <meta name="author" content="author"/> 
+        <link rel="stylesheet" type="text/css" href="/static/css/mystyle.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="/static/css/social.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="/static/font/font.css" media="screen"/>
+        <link rel="stylesheet" href="/static/css/fontello.css"><!--[if IE 7]>
+  		<link rel="stylesheet" href="/static/css/fontello-ie7.css"><![endif]-->
+  		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+		<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+		
+		<link href='{{ STATIC_URL }}../../../../film/static/img/favicon.ico' rel='shortcut icon' type='image/x-icon'/>
+        <title>Movillage</title>
+    </head>
+
+    <body>
+        <div class="all">
+            <div class="top">
+                <div class="header">
+                    
+                    <!-- Logo -->
+                    <div class="col_left">
+                        <a href='/'><img src="{{ STATIC_URL }}../../../../film/static/img/movillage_logo.png" width="250" height="35"></img></a>
+                    </div>
+                    
+                    <!-- Login / info utente loggato -->
+                    <div class="col_right">
+                        {% block login %}
+                        <div align="right" style="padding-right: 30px;">
+						    <table border="0">
+						        <tr><td><img style="margin-right: 20px; border: 1px solid #3CB228;" src='/static/img/users/{{ img_prof }}' alt="No photo inserted" height="40" width="40" /></td><td>{{ user }}</td><td><form action="/accounts/logout" method="get"><p class="submit"><input type="submit" value="Logout" /></p></form></td></tr>
+						    </table>
+						</div>
+                        {% endblock %}    
+                    </div>
+
+                    <div class="clearer"><span> </span></div>
+						
+                    <!-- Menu navigazione TOP -->                    
+                    <div class="menunav">
+                    	{% block menunav %}
+                        <a href='/'>&nbsp;<i class="icon-home"></i> Home&nbsp;</a>
+                        <a href='/accounts/profile/myprofile/'>&nbsp;<i class="icon-user"></i> My profile&nbsp;</a>                      
+                        
+                                <!-- Barra di Ricerca -->                                
+                        <ul id="v_menu">
+                            <li class="searchContainer">
+                                <form method="post" action="/search/" id="searchA">
+                                <input name="search" type="text" size="40" placeholder="Search..." autocomplete="off" />
+                                <ul id="search">
+                                    <li><label for="film"><table><tr><td>		<input type="checkbox" name="film"		id="film"		value="on" checked="checked"/></td><td>Film</td></tr></table></label></li>
+                                    <li><label for="director"><table><tr><td>	<input type="checkbox" name="director"	id="director"	value="on" /></td><td>Director</td></tr></table></label></li>
+                                    <li><label for="actor"><table><tr><td>		<input type="checkbox" name="actor" 	id="actor"		value="on" /></td><td>Actor</td></tr></table></label></li>
+                                    <li><label for="genre"><table><tr><td>		<input type="checkbox" name="genre" 	id="genre"		value="on" /></td><td>Genre</td></tr></table></label></li>
+                                    <li><label for="user"><table><tr><td>		<input type="checkbox" name="user" 		id="user"		value="on" checked="checked"/></td><td>User</td></tr></table></label></li>
+                                    <li><label for="group"><table><tr><td>		<input type="checkbox" name="group" 	id="group"		value="on" /></td><td>Group</td></tr></table></label></li>
+                                </ul>
+                                </form>
+                            </li>
+                        </ul>
+                        {% endblock %}  
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clearer"><span> </span></div>
+
+            <div class="container">	
+                	{% block all %}{% endblock %}
+                	
+                    <!-- Barra laterale sx notifiche -->
+                    {% block subnav %}
+
+                    {% endblock %}
+                    
+                    <!-- Contenuto principale pagina -->    
+                    <div class="content">
+
+
+                        {% block content %}{% endblock %}
+
+
+                    </div>
+
+                    <div class="clearer"><span> </span></div>
+
+               
+            </div>
+            <div class="clearer"></div>
+            <!-- Fondo pagina -->
+            <div class="bottom" >
+            	<div class="clearer"><span> </span></div>
+                    <div class="footer">
+                    	
+                    	    <a style="float: left; margin: 10px 5px 5px 5px;" href="https://www.facebook.com/movillage" target="_blank" class="facebook" title="Facebook"> </a>
+                          	<a style="float: left; margin: 10px 5px 5px 5px;" href="#" target="_blank" class="twitter" title="Twitter"> </a>
+                          	<a style="float: left; margin: 10px 5px 5px 5px;" href="https://plus.google.com/communities/107904833184526585351" target="_blank" class="google" title="Google+"> </a>
+							<p style="float: left; margin: 10px 5px 5px 15px;"> &copy; 2012 <a href="/">movillage.tk</a></p>
+                    </div>
+            </div>
+        </div>
+
+    </body>
+</html>

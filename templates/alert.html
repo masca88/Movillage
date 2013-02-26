@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block all %}
+	<div class="single">
+	{% if completed %}
+		<div class="filmAlert">
+			{{ completed }}
+			<button style="float: right; margin-top: -5px;">X</button>
+			<script>
+				$("button").click(function () {
+				  $('div').remove('.filmAlert');
+				});
+			</script>
+		</div>
+	{% endif %}
+	{% if alert %}
+		<div class="filmAlert" style="background-color: pink; border-color: red;">
+			{{ alert }}
+			<button style="float: right; margin-top: -5px; color: red;">X</button>
+			<script>
+				$("button").click(function () {
+				  $('div').remove('.filmAlert');
+				});
+			</script>
+		</div>
+	{% endif %}
+	</div>
+{% endblock %}

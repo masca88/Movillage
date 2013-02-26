@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block all %}
+<div class="single">
+	{% if alert %}
+		<div class="filmAlert">
+			{{ alert }}
+		</div>
+	{% endif %}
+	<h2>Upload image..</h2><br><br>
+	<form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
+	    <table>
+	        {{ form.as_table }}
+	    </table><br>
+	    <input id="link" type="submit" value="Upload image">
+	</form>
+</div>
+{% endblock %}

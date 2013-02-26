@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %} Search {% endblock %}
+{% block all %}
+<div class="single">
+	{% if none %}
+		<h2>{{none}}</h2>
+	{% endif %}
+	
+	<!-- Stampo i FILM trovati -->
+
+	{% if film_db.object_list %}
+		<h2>DB Results</h2><br>
+	    <div class="s_box_film">
+           {% for ris in film_db.object_list %}
+           		<div >
+	            	<div class="view">
+						<div class="view-back">
+							<span><a href='/film/inspreferiti/{{ ris.id }}'><i class="icon-heart"></i> Add Favs</a></span>
+							<a href='/film/scheda/{{ ris.id }}'><strong class="freccia">&rarr;</strong></a>
+						</div>
+						<img src='http://cf2.imgobject.com/t/p/w92/{{ ris.cover }}' alt="{{ ris.titolo }}" height="110" width="80" />
+						<p>{{ ris.titolo }}</p>
+					</div>
+				</div>
+            {% endfor %}
+        </div>
+		<br>
+	{% endif %}  
+	                                                
+	<div class="clearer"> </div>
+	
+	<!-- Stampo i FILM_TMDB trovati 
+	{% if film_TMDB.object_list %}
+		<h2>IMDb results</h2><br>
+		<ul class="s_box">
+		{% for risIMDb in film_TMDB.object_list %}
+		<li><a id="link" href='/film/inserisci/{{ risIMDb.imdbID }}'>Upload film</a> <strong>{{ risIMDb.Title }}</strong> - {{ risIMDb.Year }} </li><br>
+		{% endfor %}
+		</ul>
+		<br>
+	{% endif %} -->
+	
+	{% if film_TMDB.object_list %}
+	<h2>TMDB Results</h2><br>
+	    <div class="s_box_film">
+           {% for ris in film_TMDB.object_list %}
+           		<div >
+	            	<div class="view">
+						<div class="view-back">
+							<span><a id="link" href='/film/inserisci/{{ ris.tmdbID }}'><i class="icon-export"></i> Upload</a></span>
+							<span><strong>Release date</strong></span>
+							<span>{{ ris.r_date }}</span>
+						</div>
+						<img src='http://cf2.imgobject.com/t/p/w92{{ ris.poster }}' alt="{{ ris.title }}" height="110" width="80" />
+						<p>{{ ris.title }}</p>
+					</div>
+				</div>
+            {% endfor %}
+        </div>
+		<br>
+	{% endif %} 
+	
+	
+	<!-- Stampo i REGISTI trovati -->
+	{% if director_db.object_list %}
+		<h2>Director Results</h2><br>
+		<ul class="s_box">
+		{% for ris in director_db.object_list %}
+		<li><a id="link" href='/fav/dir/{{ ris.id }}'><i class="icon-heart"></i>Add fav</a> <a href='/film/select/director/{{ ris.id }}'><strong>{{ ris.nome }}</strong></a></li><br>
+		{% endfor %}
+		</ul>
+		<br>
+	{% endif %}
+		                                               
+	
+	<!-- Stampo gli ATTORI trovati -->
+	{% if actor_db %}
+	    <h2>Actor Results</h2><br>
+	    <ul class="s_box">
+		    {% for ris in actor_db.object_list %}
+		        <li><a id="link" href='/fav/actor/{{ ris.id }}'><i class="icon-heart"></i> Add fav</a> <a href='/film/select/actor/{{ ris.id }}'><strong>{{ ris.nome }}</strong></a></li><br>
+		    {% endfor %}
+	    </ul>
+		<br>
+	{% endif %}
+	
+	
+	<!-- Stampo i GENERI trovati -->
+	{% if genre_db.object_list %}
+		<h2>Genre Results</h2><br>
+		<ul class="s_box">
+			{% for ris in genre_db.object_list %}
+			<li><a id="link" href='/fav/genre/{{ ris.id }}'><i class="icon-heart"></i> Add fav</a> <a href='/film/select/genre/{{ ris.id }}'><strong>{{ ris.descrizione }}</strong></a></li><br>
+			{% endfor %}
+		</ul>
+		<br>
+	{% endif %}
+	
+	<!-- Stampo gli UTENTI trovati -->
+	{% if user_db.object_list  %}
+		<h2>User Results</h2><br>
+		<div class="s_box">
+		    {% for post in user_db.object_list %}
+		    	<div class="s_tab">
+			    	<li><a href='/utenti/profilo/{{ post.id }}'><strong>{{ post.username }}</strong></a></li><br>
+			        <li><a id="link" href='/utenti/amicizia/{{ post.id }}'><i class="icon-user-add"></i> Friend</a></li><br>
+			        <li><a id="link" href='/utenti/follow/{{ post.id }}'><i class="icon-plus-circled"></i> Follow</a></li><br>
+				</div>
+		    {% endfor %}
+		</div>
+		<br>
+	{% endif %}
+	
+	<!-- Stampo i GRUPPI trovati -->
+	{% if group_db.object_list %}
+		<h2>Group Results</h2><br>
+		<!-- group_db  -->
+		<ul class="s_box">
+		    {% for post in group_db.object_list %}
+		        <li><a href='/gruppi/topics/{{ post.id }}'><strong>{{ post.name }}</strong></a></li><br>
+		    {% endfor %}
+		</ul>
+		<br>
+	{% endif %}
+</div>
+{% endblock %}

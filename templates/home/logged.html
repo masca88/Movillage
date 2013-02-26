@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block subnav %}
+ <div class="subnav">
+ 	<h2><i class="icon-star"></i> #Followers: <a href="/utenti/follower/tot/{{ user.id }}/" >{{ nfollow }}</a></h2>
+	{% if richieste%}
+	<h2><i class="icon-user-add"></i> Friendship Requests</h2>	
+    	<table>
+        {% for r in richieste%}
+	      <tr><td><strong>{{ r.user }}</strong></td><td><a class="conferma" href='/utenti/amicizia/conferma/{{ r.id }}/'><i class="icon-check"></i></a></td><td><a href='/utenti/amicizia/rifiuta/{{ r.id }}/'><i class="icon-cancel"></i></a></td></tr>
+	   	{% endfor %}
+	   	</table>		
+    <br><br>
+    {% endif %} 
+    {% if commenti%}
+    <h2><i class="icon-chat"></i> New Group Messages</h2> 
+    	<table>
+        {% for c in commenti%}
+	    	<tr><td>{{ c.date }}<br><strong><a href='/utenti/profilo/{{ c.id }}'>{{ c.username }}</a></strong> has posted in <strong><a href='/topic/{{ c.topic_id }}/'>{{ c.descrizione }}</a></strong></td></tr>
+	   	{% endfor %}
+	   	</table>
+    <br><br>	
+    {% endif %} 
+    <h2><i class="icon-users"></i> Groups</h2>
+    <ul>
+    {% if gr_iscriz %}
+	   {% for g in gr_iscriz %}
+	      <li><a href='/gruppi/topics/{{ g.group_id }}'>{{ g.name }}</a></li>
+	   {% endfor %}	
+	{% endif %}
+		<br>
+        <li><a href='/gruppi/'><i class="icon-plus-circled"></i> Create Group</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+	<div class="longBox" >
+	{% if lastadded.object_list %}
+	   <br><h4>Recently added movies</h4><br>
+	    <div>
+	        <!-- Posts  -->
+	            {% for p in lastadded.object_list %}
+	           		<div >
+		            	<div class="view">
+							<div class="view-back">
+								<span><a href='/film/inspreferiti/{{ p.id }}'><i class="icon-heart"></i> Add Favs</a></span>
+								<a href='/film/scheda/{{ p.id }}'><strong class="freccia">&rarr;</strong></a>
+							</div>
+							 <img src='http://cf2.imgobject.com/t/p/w92/{{ p.cover }}' alt="{{ p.titolo }}" height="110" width="80" />
+							<p>{{ p.titolo }}</p>
+						</div>
+					</div>
+	            {% endfor %}
+	{% endif %}   
+	    </div>
+	</div>
+	
+	<div class="clearer"></div> 
+	<div class="line-separator"> </div> 
+	
+	<div class="shortBoxL">
+		<br><h4>SOME MOVIES RECOMMENDATIONS FOR YOU</h4><br>
+		{% if adv_film.object_list %}		   
+		    <div>
+		        <!-- Posts  -->
+		            {% for p in adv_film.object_list %}
+		           		<div >
+			            	<div class="view">
+								<div class="view-back">
+									<span><a href='/film/inspreferiti/{{ p.id }}'><i class="icon-heart"></i> Add Favs</a></span>
+									<a href='/film/scheda/{{ p.id }}'><strong class="freccia">&rarr;</strong></a>
+								</div>
+								 <img src='http://cf2.imgobject.com/t/p/w92/{{ p.cover }}' alt="{{ p.titolo }}" height="110" width="80" />
+								<p>{{ p.titolo }}</p>
+							</div>
+						</div>
+		            {% endfor %}
+			</div>
+	    {% endif %}  
+	 </div>
+	 
+	 <div class="shortBoxR"> 
+	 	<br><h4>USERS WITH YOUR SAME TASTE</h4><br>
+		{% if adv_friend.object_list %}	  
+		    <div>
+		        <!-- Posts  -->
+		        <ul>
+		            {% for f in adv_friend.object_list %}
+		            <div >
+			            <div class="view" style="width: 80px; height: 80px;">
+									<div class="view-back">
+										<span><a href='/utenti/amicizia/{{ f.id }}'><i class="icon-user-add"></i> Friend</a></span>
+										<span><a href='/utenti/follow/{{ f.id }}'><i class="icon-plus-circled"></i> Follow</a></span>
+			              				<a href='/utenti/profilo/{{ f.id }}'><strong class="frecciaQ">&rarr;</strong></a>
+			              			</div>
+			              			<img src='/static/img/users/{{ f.name }}' alt="{{ f.name }}"  height="80" width="80" />
+			            	<p>{{ f.username }}</p>
+						</div>
+					</div>
+		            {% endfor %}
+		        </ul>
+		    </div>
+		{% endif %} 
+	 </div>
+	 
+	<div class="clearer"></div> 
+	<div class="line-separator"> </div> 
+	
+	<div class="longBox">
+	{% if mostfollowed.object_list %}
+	   <br><h4>TOP 5 Followed Users</h4><br>
+	    <div>
+	        <!-- Posts  -->
+	        <ul>
+	            {% for f in mostfollowed.object_list %}
+	            <div >
+		            <div class="view" style="width: 80px; height: 80px;">
+								<div class="view-back">
+									<span><a href='/utenti/amicizia/{{ f.id }}'><i class="icon-user-add"></i> Friend</a></span>
+									<span><a href='/utenti/follow/{{ f.id }}'><i class="icon-plus-circled"></i> Follow</a></span>
+		              				<a href='/utenti/profilo/{{ f.id }}'><strong class="frecciaQ">&rarr;</strong></a>
+		              			</div>
+		              			<img src='/static/img/users/{{ f.name }}' alt="{{ f.name }}"  height="80" width="80" />
+		            	<p>{{ f.username }}</p>
+					</div>
+				</div>
+	            {% endfor %}
+	        </ul>
+	{% endif %}   
+	    </div>
+	 </div> 
+{% endblock %}

@@ -1,0 +1,58 @@
+>> Condizioni di utilizzo
+-------------------------------------------------
+Questo modello di pagina Web e' distribuito con licenza d'uso Creative Commons Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
+
+Tu sei libero:
+
+    * di riprodurre, distribuire, comunicare al pubblico, esporre in pubblico, rappresentare, eseguire e recitare quest'opera
+    * di modificare quest'opera
+
+Alle seguenti condizioni:
+
+    * Attribuzione. Devi attribuire la paternità dell'opera nei modi indicati dall'autore o da chi ti ha dato l'opera in licenza e in modo tale da non suggerire che essi avallino te o il modo in cui tu usi l'opera.
+    * Ogni volta che usi o distribuisci quest'opera, devi farlo secondo i termini di questa licenza, che va comunicata con chiarezza.
+    * In ogni caso, puoi concordare col titolare dei diritti utilizzi di quest'opera non consentiti da questa licenza.
+    * Questa licenza lascia impregiudicati i diritti morali.
+
+Attribuzione: 
+
+    * Devi includere un link al mio sito web (http://www.marbaro.it/) nelle pagine web da te create per mezzo di quest'opera.
+
+In altre parole, tutto cio' significa che sei libero di fare tutto quello che vuoi con il presente lavoro purche' rimanga inalterata la proprieta' intellettuale dell'autore, fornendo un link al suo sito web.
+
+>> Contatti
+-------------------------------------------------
+Autore: Marco [Mar::Baro] Barontini
+Email: info@marbaro.it
+Sito Web: http://www.marbaro.it/
+
+
+>> License Agreement
+-------------------------------------------------
+This template is licensed under a Creative Commons Attribution 3.0 License.
+http://creativecommons.org/licenses/by/3.0/
+
+You are free:
+
+    * to Share — to copy, distribute and transmit the work
+    * to Remix — to adapt the work
+
+Under the following conditions:
+
+    * Attribution. You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).
+    * For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this web page.
+    * Any of the above conditions can be waived if you get permission from the copyright holder.
+    * Nothing in this license impairs or restricts the author's moral rights.
+
+Attribution:
+
+    * Must include the provided link back to my website (http://www.marbaro.it/).
+
+This means that you are free to use and modify the templates & themes for any purpose, but you must include the provided link back to my website.
+
+>> Contact
+-------------------------------------------------
+Author: Marco [Mar::Baro] Barontini
+Email: info@marbaro.it
+Website: http://www.marbaro.it/

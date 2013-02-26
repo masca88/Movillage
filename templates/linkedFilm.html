@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block all %}
+<div class="single">
+	
+	<h1 style="float: left; margin-left: 190px;">{{ rel }}</h1>
+	<div class="fav" style="float: left;  margin: 6px 0 0 20px;"><a href='/fav/{{ type }}/{{ rel.id }}'><i class="icon-heart"></i> Add Favs</a></div>
+	
+	<div class="longBox" style="margin-left: 150px;">
+		<h4>Related Films</h4><br>		
+		{% if movies.object_list %}
+		    <div>
+	            {% for p in movies.object_list %}
+	           		<div >
+		            	<div class="view">
+							<div class="view-back">
+								<span><a href='/film/inspreferiti/{{ p.film_id }}'><i class="icon-heart"></i> Add Favs</a></span>
+								<a href='/film/scheda/{{ p.film_id }}'><strong class="freccia">&rarr;</strong></a>
+							</div>
+							 <img src='http://cf2.imgobject.com/t/p/w92/{{ p.cover }}' alt="{{ p.titolo }}" height="110" width="80" />
+							<p>{{ p.titolo }}</p>
+						</div>
+					</div>
+	            {% endfor %}
+			</div>
+		{% endif %}
+		<div class="clearer"></div>
+		<!-- Next/Prev page links  -->
+        {% if movies.object_list and movies.paginator.num_pages > 1 %}
+	        <div class="pagination">
+	                {% if movies.has_previous %}
+	                    <a class="page " href= "?page={{ movies.previous_page_number }}">Prev &lt;&lt; </a>
+	                {% endif %}
+		               
+	                {{ movies.number }} of {{ movies.paginator.num_pages }}
+	        		
+	                {% if movies.has_next %}
+	                    <a class="page gradient" href="?page={{ movies.next_page_number }}"> &gt;&gt; Next</a>
+	                {% endif %}
+	        </div>
+        {% endif %}   
+	</div>
+</div>	
+{% endblock %}

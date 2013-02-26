@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% block all %}
+
+<div class="single">
+	{% if alert %}
+		<div class="filmAlert">
+			{{ alert }}
+			<button style="float: right; margin-top: -5px;">X</button>
+				<script>
+					$("button").click(function () {
+					  $('div').remove('.filmAlert');
+					});
+				</script>
+		</div>
+	{% endif %}
+	{% if friends or follow or follower or movies %}
+		<a href="/utenti/profilo/{{ rel.id }}"><h1 style="float: left; margin-left: 190px;">{{ rel }}</h1></a>
+	{% endif %}
+	{% if actors or genres or dirs %}
+		<a href="/utenti/profilo/{{ rel.id }}"><h1 style="float: left; margin: 0 0 20px 10px;">{{ rel }}</h1></a><br><br><br>
+	{% endif %}
+		
+	<!-- ALL FRIENDS  -->
+	{% if friends %}
+		<div class="longBox" style="margin-left: 150px;">		
+			<h4>FRIENDS</h4><br>
+			{% if friends.object_list %}	
+	            {% for f in friends.object_list %}
+						<div >
+				            <div class="view" style="width: 80px; height: 80px;">
+										<div class="view-back">
+											{% if user == rel %}
+												<span><a href='/users/friends/delete/{{ f.user_id }}'><i class="icon-block"></i> Remove</a></span>
+											{% endif %}
+				              				<a href='/utenti/profilo/{{ f.user_id }}'><strong class="frecciaQ">&rarr;</strong></a>
+				              			</div>
+				              			<img src='/static/img/users/{{ f.name }}' alt="{{ f.name }}"  height="80" width="80" />
+				            	<p>{{ f.nome }} {{ f.cognome }}</p>
+							</div>
+						</div>            
+				{% endfor %}
+			{% endif %}		
+			<div class="clearer"></div>
+			<!-- Next/Prev page links  -->
+	        {% if friends.object_list and friends.paginator.num_pages > 1 %}
+		        <div class="pagination">
+		                {% if friends.has_previous %}
+		                    <a class="page " href= "?page={{ friends.previous_page_number }}">Prev &lt;&lt; </a>
+		                {% endif %}
+			               
+		                {{ friends.number }} of {{ friends.paginator.num_pages }}
+		        		
+		                {% if friends.has_next %}
+		                    <a class="page gradient" href="?page={{ friends.next_page_number }}"> &gt;&gt; Next</a>
+		                {% endif %}
+		        </div>
+	        {% endif %} 
+	        </div>
+	{% endif %}	
+	
+	<!-- ALL FOLLOWING  -->
+	{% if follow %}
+		<div class="longBox" style="margin-left: 150px;">		
+			<h4>FOLLOWING</h4><br>
+			{% if follow.object_list %}	
+	            {% for f in follow.object_list %}
+						<div >
+				            <div class="view" style="width: 80px; height: 80px;">
+										<div class="view-back">
+											{% if user == rel %}
+											<span><a href='/users/follow/delete/{{ f.user_id }}'><i class="icon-block"></i> Remove</a></span>
+				              				{% endif %}
+				              				<a href='/utenti/profilo/{{ f.user_id }}'><strong class="frecciaQ">&rarr;</strong></a>
+				              			</div>
+				              			<img src='/static/img/users/{{ f.name }}' alt="{{ f.name }}"  height="80" width="80" />
+				            	<p>{{ f.nome }} {{ f.cognome }}</p>
+							</div>
+						</div>            
+				{% endfor %}
+			{% endif %}
+			<div class="clearer"></div>
+			<!-- Next/Prev page links  -->
+	        {% if follow.object_list and follow.paginator.num_pages > 1 %}
+		        <div class="pagination">
+		                {% if follow.has_previous %}
+		                    <a class="page " href= "?page={{ follow.previous_page_number }}">Prev &lt;&lt; </a>
+		                {% endif %}
+			               
+		                {{ follow.number }} of {{ follow.paginator.num_pages }}
+		        		
+		                {% if follow.has_next %}
+		                    <a class="page gradient" href="?page={{ follow.next_page_number }}"> &gt;&gt; Next</a>
+		                {% endif %}
+		        </div>
+	        {% endif %}  
+	    </div>		
+	{% endif %}	
+	
+	<!-- ALL FOLLOWERS  -->
+	{% if follower %}
+		<div class="longBox" style="margin-left: 150px;">		
+			<h4>FOLLOWING</h4><br>
+			{% if follower.object_list %}	
+	            {% for f in follower.object_list %}
+						<div >
+				            <div class="view" style="width: 80px; height: 80px;">
+										<div class="view-back">
+				              				<a href='/utenti/profilo/{{ f.user_id }}'><strong class="frecciaQ">&rarr;</strong></a>
+				              			</div>
+				              			<img src='/static/img/users/{{ f.name }}' alt="{{ f.name }}"  height="80" width="80" />
+				            	<p>{{ f.nome }} {{ f.cognome }}</p>
+							</div>
+						</div>            
+				{% endfor %}
+			{% endif %}
+			<div class="clearer"></div>
+			<!-- Next/Prev page links  -->
+	        {% if follower.object_list and follower.paginator.num_pages > 1 %}
+		        <div class="pagination">
+		                {% if follower.has_previous %}
+		                    <a class="page " href= "?page={{ follower.previous_page_number }}">Prev &lt;&lt; </a>
+		                {% endif %}
+			               
+		                {{ follower.number }} of {{ follower.paginator.num_pages }}
+		        		
+		                {% if follower.has_next %}
+		                    <a class="page gradient" href="?page={{ follower.next_page_number }}"> &gt;&gt; Next</a>
+		                {% endif %}
+		        </div>
+	        {% endif %}  
+	    </div>		
+	{% endif %}
+	
+	<!-- ALL MOVIES  -->
+	{% if movies %}
+		<div class="longBox" style="margin-left: 150px;">
+			<h4>favourite movies</h4><br>		
+			{% if movies.object_list %}
+			    <div>
+		            {% for p in movies.object_list %}
+		           		<div >
+			            	<div class="view">
+								<div class="view-back">
+									{% if user == rel %}
+										<span><a href='/film/fav/delete/{{ p.id }}'><i class="icon-heart"></i> Remove</a></span>
+									{% endif %}
+									<a href='/film/scheda/{{ p.id }}'><strong class="freccia">&rarr;</strong></a>
+								</div>
+								 <img src='http://cf2.imgobject.com/t/p/w92/{{ p.cover }}' alt="{{ p.titolo }}" height="110" width="80" />
+								<p>{{ p.titolo }}</p>
+							</div>
+						</div>
+		            {% endfor %}
+				</div>
+			{% endif %}
+			<div class="clearer"></div>
+			<!-- Next/Prev page links  -->
+	        {% if movies.object_list and movies.paginator.num_pages > 1 %}
+		        <div class="pagination">
+		                {% if movies.has_previous %}
+		                    <a class="page " href= "?page={{ movies.previous_page_number }}">Prev &lt;&lt; </a>
+		                {% endif %}
+			               
+		                {{ movies.number }} of {{ movies.paginator.num_pages }}
+		        		
+		                {% if movies.has_next %}
+		                    <a class="page gradient" href="?page={{ movies.next_page_number }}"> &gt;&gt; Next</a>
+		                {% endif %}
+		        </div>
+	        {% endif %}   
+	    </div>		
+	{% endif %}	
+
+	<!-- ALL -->
+	{% if genres %}
+		<div class="s_box">
+			<h4 id="subtitle">Favourite Genres</h4><br>		
+			{% if genres %}
+		        <ul>
+		            {% for ris in genres %}
+		                <li><a href='/film/select/genre/{{ ris.genere_id }}'><strong>{{ ris.descrizione }}</strong></a></li><br>
+		            {% endfor %}
+		        </ul>	
+			{% endif %} 
+	    </div>		
+	{% endif %}
+	{% if dirs %}
+		<div class="s_box">
+			<h4 id="subtitle">Favourite Directors</h4><br>		
+			{% if dirs %}
+		        <ul>
+		            {% for ris in dirs %}
+		                <li><a href='/film/select/director/{{ ris.regista_id }}'><strong>{{ ris.nome }}</strong></a></li><br>
+		            {% endfor %}
+		        </ul>	
+			{% endif %}
+	    </div>		
+	{% endif %}
+	{% if actors %}
+		<div class="s_box">
+			<h4 id="subtitle">Favourite Actors</h4><br>		
+			{% if actors %}
+		        <ul>
+		            {% for ris in actors %}
+		                <li><a href='/film/select/actor/{{ ris.attore_id }}'><strong>{{ ris.nome }}</strong></a></li><br>
+		            {% endfor %}
+		        </ul>	
+			{% endif %} 
+	    </div>		
+	{% endif %}			
+
+</div>
+
+{% endblock %}

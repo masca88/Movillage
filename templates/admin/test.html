@@ -1,0 +1,30 @@
+{% extends "admin.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+<h2>Welcome to the test page, you can fill the database to simulate a real network</h2><br><br>
+
+<h4>1)Fill the users chart</h4>
+<a href='/test/users/'>Test users</a><br><br>
+
+<h4>2)Create friends relationships</h4>
+<a href='/test/friends/'>Test friends</a><br><br>
+
+<h4>3)Create following relationships</h4>
+<a href='/test/follower/'>Test follower</a><br><br>
+
+<h4>4)Fill the groups chart</h4>
+<a href='/test/groups/'>Test groups</a><br><br>
+
+<h4>5)Create inscriptions</h4>
+<a href='/test/iscr/'>Test iscr</a><br><br>
+
+<h4>6)Create topics for each group</h4>
+<a href='/test/topics/'>Test topics</a><br><br>
+
+<h4>7)Add favourites for each user*</h4>
+<a href='/test/fav/'>Test fav</a><br><br>
+
+<span>*there must be at least one film in the database</span>
+
+{% endblock %}

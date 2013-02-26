@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+<meta name="description" content="description"/>
+<meta name="keywords" content="keywords"/> 
+<meta name="author" content="author"/> 
+<link rel="stylesheet" type="text/css" href="/static/admin_template/style.css" media="screen"/>
+<title>ADMIN</title>
+</head>
+
+<body>
+
+<div class="top">
+	<div class="header">
+		<div class="col_left">
+			<h1>ADMIN</h1>
+		</div>
+		<div class="col_right">
+
+		</div>
+	</div>
+</div>
+
+<div class="container">	
+	<div class="menunav">
+	        <a href='/adm/home/'>Home</a>
+
+         <a href='/adm/repc/'>Comments reported</a>
+         <a href='/adm/reptop/'>Comments in topics reported</a>
+         <a href='/test/'>Test</a>
+         <a href='/db/status/'>Database status</a>
+         <a href='/login/admin/'>Logout</a>
+		<div class="clearer"><span> </span></div>
+	</div>
+	<div class="main">
+               	<div class="subnav">
+
+
+		</div><br>
+
+		<div class="content">
+
+
+		 {% block content %}{% endblock %}
+
+
+		</div>
+
+		<div class="clearer"><span> </span></div>
+
+	</div>
+</div>
+
+<div class="bottom">
+	<div class="footer">
+		&copy; 2008 <a href="index.html">nomedelsito.com</a>. Valid <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> &amp; <a href="http://validator.w3.org/check?uri=referer">XHTML</a>
+	</div>
+</div>
+
+</body>
+</html>

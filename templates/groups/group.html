@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Registrazione utenti{% endblock %}
+{% block all %}
+<div class="single">
+	<h2>Create a group</h2><br><br>
+	<form action="." method="POST">
+		<table>
+			{{ form.as_table }}
+		</table>
+	<p class="submit"><input type="submit" value="create group" /></p>
+	</form>
+	
+	{% if completed %}
+	<br><br><h4>{{ completed }}</h4>
+	<br><a href='/gruppi/topics/{{ groupid.id }}'>View group ...</a><br>
+	{% endif %}
+	
+	{% if present %}
+	<br><br><h4>{{ present }}</h4>
+	{% endif %}
+	
+	{% if adv_group %}
+	  <br><h4>Groups you could be interested in</h4><br>
+	   {% for f in adv_group %}
+	      <li><a href='/gruppi/topics/{{ f.id }}'>{{ f.name }}</a></li><br>
+	   {% endfor %}
+	{% endif %}
+	
+	
+	
+	{% if newgroups %}
+	  <br><h4>Some of last created groups</h4><br>
+	   {% for f in newgroups %}
+	      <li><a href='/gruppi/topics/{{ f.id }}'>{{ f.name }}</a></li><br>
+	   {% endfor %}
+	{% endif %}
+</div>
+
+{% endblock %}

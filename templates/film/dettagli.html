@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block title %}Film data{% endblock %}
+{% block all %}
+<div class="single">
+	{% if alert %}
+		<div class="filmAlert">
+			{{ alert }}
+			<button style="float: right; margin-top: -5px;">X</button>
+			<script>
+				$("button").click(function () {
+				  $('div').remove('.filmAlert');
+				});
+			</script>
+		</div>
+	{% endif %}
+	<div class="filmL">	
+		<table border="0" >
+			<tr>
+				<td>
+					<h1>{{ film.titolo }}</h1>
+					{{ film.anno }}<br>
+					<div class="fav"><a href='/film/inspreferiti/{{ film.id }}'><i class="icon-heart"></i> Add Favs</a></div><br><br>
+			      	{% if genere %}
+			         	{% for ris in genere %}
+			           		<div class="genre"><a id="link" href='/film/select/genre/{{ ris.id }}'>{{ ris.descrizione }}</a></div>
+			          	{% endfor %}
+			       	{% endif %}<br><br>				   	
+					
+				</td>
+				<td valign="top">				  
+					<form action="/film/scheda/vota/{{ film.id }}/" method="post">  
+						<fieldset class="rating">
+							<input type="radio" id="star10" name="voto" value="10" /><label for="star10" title="Supreme!!"></label>
+							<input type="radio" id="star9" name="voto" value="9" /><label for="star9" title="Rocks!"></label>
+							<input type="radio" id="star8" name="voto" value="8" /><label for="star8" title="Wonderful"></label>
+							<input type="radio" id="star7" name="voto" value="7" /><label for="star7" title="Awesome"></label>
+							<input type="radio" id="star6" name="voto" value="6" /><label for="star6" title="Great"></label>
+						    <input type="radio" id="star5" name="voto" value="5" /><label for="star5" title="Good"></label>
+						    <input type="radio" id="star4" name="voto" value="4" /><label for="star4" title="Pretty good"></label>
+						    <input type="radio" id="star3" name="voto" value="3" /><label for="star3" title="Meh"></label>
+						    <input type="radio" id="star2" name="voto" value="2" /><label for="star2" title="Kinda bad"></label>
+						    <input type="radio" id="star1" name="voto" value="1" /><label for="star1" title="Sucks big time"></label>
+						</fieldset>
+						<p class="submit"><input style="margin-top: 10px;" type="submit" value="Vote" ></p>
+					</form>
+					<strong>User rating : </strong>{% if rating %}{{ rating }}{% endif %}  ({{ nvoti }} users voted this film) 
+				</td>
+			</tr>
+		</table>
+		<ul id="tabs">
+		      <li><a href="##" name="#tab1" id="current">Plot</a></li>
+		      <li><a href="##" name="#tab2">Cast</a></li>
+		      <li><a href="##" name="#tab3">Info</a></li>   
+		  </ul>
+		
+		  <div id="content_tab">		      
+		      <div id="tab1" style="display: none; ">
+				{{ film.trama }}
+		      </div>
+		      <div id="tab2" style="display: none; ">
+		      	{% if cast %}
+			          <strong>Actors:</strong><br>
+			          <div class="clearer"></div>
+			          {% for i in cast %}
+			          	<a href="/film/select/actor/{{ i.id }}">{{ i.nome }}</a><br>
+			          {% endfor %}
+			    {% endif %}<br>
+			  </div>
+			  <div id="tab3" style="display: block; ">			
+				    {% if regia %}
+			          <strong>Directed by:</strong><br>
+			          {% for i in regia %}
+			          <a href="/film/select/director/{{ i.id }}">{{ i.nome }}</a><br>
+			          {% endfor %}
+			       	{% endif %}<br>
+			
+			       	{% if scrive %}
+			          <strong>Written by:</strong><br>
+			          {% for i in scrive %}
+			          {{ i }}<br>
+			          {% endfor %}
+			       	{% endif %}<br>
+			       
+			       {% if lang %}
+			          <strong>Languages:</strong><br>
+			          {% for i in lang %}
+			          {{ i }}<br>
+			          {% endfor %}
+			       {% endif %}<br>
+			       
+			       {% if set %}
+			          <strong>Set:</strong><br>
+			          {% for i in set %}
+			          {{ i }}<br>
+			          {% endfor %}
+			       {% endif %}<br>
+		      </div>
+		  	</div>
+	</div>
+	
+	<div class="filmR"> 	  
+	<img src='http://cf2.imgobject.com/t/p/w342/{{ film.cover }}' alt="Not avaiable" height="350" width="260" />
+  	</div> 
+  	
+  	{% if film.trailer %}
+  		<div class="clearer"> </div>
+  		<div class="line-separator"> </div> 
+		<iframe style="margin-left: 80px;" width="750" height="340" src="http://www.youtube.com/embed/{{ film.trailer }}" frameborder="0" allowfullscreen></iframe>
+	{% endif %}
+	
+  	<div class="clearer"> </div>
+  	<div class="line-separator"> </div> 
+  	
+	<div class="filmC">
+		<div>
+			<h2>Comments</h2>
+			<form action="/film/scheda/commenti/{{ film.id }}/" method="post">
+		       <textarea name="commento" rows="8" cols="60"></textarea>
+		       <p class="submit"><input type="submit" value="Post" /></p>
+	      	</form>
+	      	{% if comments %}
+		        <!-- Posts  -->
+		        <div class="comments">
+			        <ul>
+			            {% for post in comments.object_list %}
+			                <li>
+			                	<table>
+			                		<tr>
+			                			<td rowspan="2" style="text-align: center; width: 90px; overflow: hidden;">					                	
+						                	<img src='/static/img/users/{{ post.name }}' alt="No photo inserted" height="40" width="40" /><br>
+						                	<a href='/utenti/profilo/{{ post.id }}'><strong>{{ post.username }}</strong></a>
+					                	</td>
+					                	<td>
+					                		<strong>{{ post.date }}</strong> <a href='/report/{{ post.commento_id }}'> Report</a>
+					                	</td>
+					                </tr>
+					                <tr>				                			                	
+					                	<td>
+					    					{{ post.commento }}
+					                	</td>
+				                	</tr>			                	
+			                	</table>
+			                </li>  
+			            {% endfor %}
+			        </ul>
+		        </div>
+		        <!-- Next/Prev page links  -->
+		        {% if comments.object_list and comments.paginator.num_pages > 1 %}
+		        <div>
+		            <span>
+		                {% if comments.has_previous %}
+		                    <a href= "?page={{ comments.previous_page_number }}">Prev &lt;&lt; </a>
+		                {% endif %}
+		
+		                <span>
+		                    &nbsp;Page {{ comments.number }} of {{ comments.paginator.num_pages }}
+		                </span>
+		
+		                {% if comments.has_next %}
+		                    <a href="?page={{ comments.next_page_number }}"> &gt;&gt; Next</a>
+		                {% endif %}
+		            </span>
+		        </div>
+		        {% endif %}
+			{% endif %}
+	    </div>
+	</div>
+	
+    <script src="/static/js/jquery-1.7.2.min.js"></script>
+    <script src="/static/js/tab.js"></script>
+</div>
+        
+{% endblock %}

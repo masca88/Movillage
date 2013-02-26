@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+        <meta name="description" content="description"/>
+        <meta name="keywords" content="keywords"/> 
+        <meta name="author" content="author"/> 
+        <link rel="stylesheet" type="text/css" href="/static/mystyle.css" media="screen"/>
+        <title>Movillage</title>
+    </head>
+
+    <body>
+        <div class="all">
+            <div class="top">
+                    <div class="header">
+                            <div class="col_left">
+                        <img src="{{ STATIC_URL }}img/movillage_logo.png" width="250" height="35"></img>
+                            </div>
+                            <div class="col_right">
+
+
+                            </div>
+                            <div class="clearer"><span> </span></div>
+
+
+                            <div class="menunav">
+                                <a href="/accounts/login/">Login</a>
+                                <a href="/accounts/register/">Create an account</a>
+                                <a href="/login/admin/">Admin</a>
+                                <div class="clearer"><span> </span></div>
+                            </div>
+
+                            
+
+                    </div>
+                
+            </div>
+
+            <div class="container">	
+
+                    <div class="main">
+
+
+                            <div class="content">
+
+
+                             {% block content %}{% endblock %}
+
+
+                            </div>
+
+                            <div class="clearer"><span> </span></div>
+
+                    </div>
+            </div>
+
+            <div class="bottom">
+                    <div class="footer">
+                            &copy; 2012 <a href="/accounts/profile">movillage.com</a>.
+                    </div>
+            </div>
+        </div>
+
+    </body>
+</html>

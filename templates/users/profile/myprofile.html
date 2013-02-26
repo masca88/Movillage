@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Dati utente{% endblock %}
+{% block all %}
+
+<div class="single">
+	<div class="barL">
+	{% if user %}
+	<h2>{{ user.username }}</h2><br>
+	
+	<img style="margin: 10px 0 10px 0; box-shadow:  2px 2px 6px 1px  #2E3232;" src='/static/img/users/{{ profile.name }}' alt="No photo inserted" height="130" width="130" /><br><br>
+	
+	
+	<strong>Name: </strong>{{ profile.nome }}<br><br>
+	<strong>surname: </strong>{{ profile.cognome }}<br><br>
+	<strong>Country : </strong>{{ profile.paese }}<br><br>
+	<strong>Hometown: </strong>{{ profile.citta }}<br><br>
+	<strong>Age: </strong>{{ profile.eta }}<br><br>
+	<strong>Email: </strong>{{ user.email }}<br><br>
+	<strong>Sex: </strong>{{ sex }}<br><br>
+	<a id="link" href='/accounts/profile/myprofile/chpswd/'>Change password</a><br><br>
+	<a id="link" href='/accounts/profile/myprofile/image/'>Set photo-profile</a><br><br>
+	
+	
+	{% if postsg.object_list %}
+	<br><h2>My groups</h2><br>
+	 <div>
+	        <!-- Posts  -->
+	        <ul>
+	            {% for post in postsg.object_list %}
+	                <dt><a id="link" style="background: red; border-color: red;" href='/groups/delete/{{ post.group_id }}/'> Delete</a> <a href='/gruppi/topics/{{ post.group_id }}'>{{ post.name }}</a></dt><br>
+	            {% endfor %}
+	        </ul>
+	        <!-- Next/Prev page links  -->
+	        {% if postsg.object_list and postsg.paginator.num_pages > 1 %}
+	        <div>
+	            <span>
+	                {% if postsg.has_previous %}
+	                    <a href= "?page={{ postsg.previous_page_number }}">Prev &lt;&lt; </a>
+	                {% endif %}
+	
+	                <span>
+	                    &nbsp;Page {{ postsg.number }} of {{ postsg.paginator.num_pages }}
+	                </span>
+	
+	                {% if postsg.has_next %}
+	                    <a href="?page={{ postsg.next_page_number }}"> &gt;&gt; Next</a>
+	                {% endif %}
+	            </span>
+	        </div>
+	        {% endif %}
+	    </div>
+	  {% endif %}
+	
+	{% endif %}
+	</div>
+	
+	<div class="contR">
+		<div class="shortBoxL_friend">
+			<h4>friends <a href="/utenti/amicizia/tot/{{ profile.user_id }}">>></a></h4><br>
+			{% if friends.object_list %}	  
+		            {% for f in friends.object_list %}
+			        	<div class="user_list"><img src='/static/img/users/{{ f.name }}' alt="{{ f.name }}"  height="20" width="20" /> <a href='/utenti/profilo/{{ f.user_id }}'><strong>{{ f.nome }} {{f.cognome}}</strong></a></div>
+		            {% endfor %}
+			{% endif %} 
+		</div>
+		<div class="shortBoxR_follow">
+			<h4>following <a href="/utenti/follow/tot/{{ profile.user_id }}">>></a></h4><br>
+			{% if follow.object_list %}	
+		            {% for f in follow.object_list %}
+			        	<div class="user_list"><img src='/static/img/users/{{ f.name }}' alt="{{ f.name }}"  height="20" width="20" /> <a href='/utenti/profilo/{{ f.user_id }}'><strong>{{ f.nome }} {{f.cognome}}</strong></a></div>
+		            {% endfor %}
+			{% endif %} 		
+		</div>
+		<div class="clearer"> </div>
+		<div class="line-separator"> </div>
+		<div class="longBox">
+			<h4>favourite movies <a href="/film/showpreferiti/{{ profile.user_id }}">>></a></h4>
+			{% if filmPref.object_list %}
+			    <div>
+		            {% for p in filmPref.object_list %}
+		           		<div >
+			            	<div class="view">
+								<div class="view-back">
+									<span><a href='/film/fav/delete/{{ p.id }}'><i class="icon-heart"></i> Remove</a></span>
+									<a href='/film/scheda/{{ p.id }}'><strong class="freccia">&rarr;</strong></a>
+								</div>
+								 <img src='http://cf2.imgobject.com/t/p/w92/{{ p.cover }}' alt="{{ p.titolo }}" height="110" width="80" />
+								<p>{{ p.titolo }}</p>
+							</div>
+						</div>
+		            {% endfor %}
+				</div>
+			{% endif %}
+		</div>
+		<div class="clearer"> </div>
+		<div class="line-separator"> </div>
+		<div class="shortBox">
+			<h4>favourite actors <a href="/film/showPref/{{ profile.user_id }}">>></a></h4><br>
+			{% if actors %}
+		        <ul>
+		            {% for ris in actors %}
+		                <li><a href='/film/select/actor/{{ ris.attore_id }}'><strong>{{ ris.nome }}</strong></a></li><br>
+		            {% endfor %}
+		        </ul>			        		
+			{% endif %}		
+		</div>
+		<div class="shortBox">
+			<h4>favourite directors <a href="/film/showPref/{{ profile.user_id }}">>></a></h4><br>
+			{% if dirs %}
+		        <ul>
+		            {% for ris in dirs %}
+		                <li><a href='/film/select/director/{{ ris.regista_id }}'><strong>{{ ris.nome }}</strong></a></li><br>
+		            {% endfor %}
+		        </ul>			
+			{% endif %}	
+		</div>
+		<div class="shortBox">
+			<h4>fovourite genres <a href="/film/showPref/{{ profile.user_id }}">>></a></h4><br>
+			{% if genres %}
+		        <ul>
+		            {% for ris in genres %}
+		                <li><a href='/film/select/genre/{{ ris.genere_id }}'><strong>{{ ris.descrizione }}</strong></a></li><br>
+		            {% endfor %}
+		        </ul>	
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
