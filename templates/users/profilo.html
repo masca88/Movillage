@@ -106,7 +106,7 @@
 			<div class="line-separator"> </div>
 		{% endif %} 
 		<div class="longBox">
-			<h4>favourite movies <a href="/film/showpreferiti/{{ friend.id }}{{ follower.id }}">>></a></h4>
+			<h4>favourite movies <a href="/film/showpreferiti/{{ friend.id }}{{ follower.id }}{{ following.id }}">>></a></h4>
 			{% if filmPref.object_list %}
 			    <div>
 		            {% for p in filmPref.object_list %}
@@ -127,7 +127,7 @@
 		<div class="clearer"> </div>
 		<div class="line-separator"> </div>
 		<div class="shortBox">
-			<h4>favourite actors <a href="/film/showPref/{{ friend.id }}{{ follower.id }}">>></a></h4><br>
+			<h4>favourite actors <a href="/film/showPref/{{ friend.id }}{{ follower.id }}{{ following.id }}">>></a></h4><br>
 			{% if actors %}
 		        <ul>
 		            {% for ris in actors %}
@@ -137,7 +137,7 @@
 			{% endif %}		
 		</div>
 		<div class="shortBox">
-			<h4>favourite directors <a href="/film/showPref/{{ friend.id }}{{ follower.id }}">>></a></h4><br>
+			<h4>favourite directors <a href="/film/showPref/{{ friend.id }}{{ follower.id }}{{ following.id }}">>></a></h4><br>
 			{% if dirs %}
 		        <ul>
 		            {% for ris in dirs %}
@@ -147,7 +147,7 @@
 			{% endif %}	
 		</div>
 		<div class="shortBox">
-			<h4>fovourite genres <a href="/film/showPref/{{ friend.id }}{{ follower.id }}">>></a></h4><br>
+			<h4>fovourite genres <a href="/film/showPref/{{ friend.id }}{{ follower.id }}{{ following.id }}">>></a></h4><br>
 			{% if genres %}
 		        <ul>
 		            {% for ris in genres %}

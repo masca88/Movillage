@@ -119,7 +119,8 @@ def profilo(request, id, alert=None):
         return render_to_response('users/profilo.html', {
                                                           'user': request.session['user'],
                                                           'img_prof': request.session['img_prof'],  
-                                                          'notfriends' : user
+                                                          'notfriends' : user,
+                                                          'alert' : alert
                                                           })
         
     
@@ -240,13 +241,13 @@ def amicizia(request, id):
         if (len(presenteinv) == 0):                                                              #invia correttamente la richiesta di amicizia
             inserimento = Amicizia(user_id=user.id, amico_id=id)
             inserimento.save()
-            conferma = "Friend request correctly sent"                                            #altrimenti manda opportuno messaggio di errore
+            alert = "Friend request correctly sent"                                            #altrimenti manda opportuno messaggio di errore
         else:
-            conferma = "This user has already posted you a friendship request"
+            alert = "This user has already posted you a friendship request"
     else:
-        conferma = "You have already posted a friendship request to this user"
+        alert = "You have already posted a friendship request to this user"
 
-    return profilo(request, id, conferma)
+    return profilo(request, id, alert)
 
 
 

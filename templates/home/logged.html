@@ -56,14 +56,15 @@
 	    </div>
 	</div>
 	
+	<!--  FILM E UTENTI RACCOMANDATI
+		
 	<div class="clearer"></div> 
 	<div class="line-separator"> </div> 
 	
 	<div class="shortBoxL">
-		<br><h4>SOME MOVIES RECOMMENDATIONS FOR YOU</h4><br>
+		<br><h4>MOVIES RECOMMENDATION</h4><br>
 		{% if adv_film.object_list %}		   
 		    <div>
-		        <!-- Posts  -->
 		            {% for p in adv_film.object_list %}
 		           		<div >
 			            	<div class="view">
@@ -79,12 +80,11 @@
 			</div>
 	    {% endif %}  
 	 </div>
-	 
+
 	 <div class="shortBoxR"> 
-	 	<br><h4>USERS WITH YOUR SAME TASTE</h4><br>
+	 	<br><h4>SIMILAR USERS</h4><br>
 		{% if adv_friend.object_list %}	  
 		    <div>
-		        <!-- Posts  -->
 		        <ul>
 		            {% for f in adv_friend.object_list %}
 		            <div >
@@ -104,6 +104,8 @@
 		{% endif %} 
 	 </div>
 	 
+	-->
+	
 	<div class="clearer"></div> 
 	<div class="line-separator"> </div> 
 	
